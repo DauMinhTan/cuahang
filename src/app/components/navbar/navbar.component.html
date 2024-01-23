@@ -1,0 +1,55 @@
+<header>
+  <div class="wrapper navbar">
+    <a href="#" class="logo">SomeComp</a>
+
+    <nav>
+      <svg class="close" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M17.59 5L12 10.59L6.41 5L5 6.41L10.59 12L5 17.59L6.41 19L12 13.41L17.59 19L19 17.59L13.41 12L19 6.41L17.59 5Z" fill="black"/>
+      </svg>
+      <ul>
+        <li class="active"><a href="#">Home</a></li>
+        <li><a href="#">Products</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </nav>
+
+    <div class="btn">
+
+      <button type="submit" (click)="openDialog()">
+
+        <i class="fa-solid fa-cart-shopping" aria-hidden="true"></i>
+        <p>Cart</p>
+      </button>
+
+      <svg class="hamburger" width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M15 22.5H3.75V20H15V22.5ZM26.25 16.25H3.75V13.75H26.25V16.25ZM26.25 10H15V7.5H26.25V10Z" fill="black"/>
+      </svg>
+    </div>
+  </div>
+</header>
+
+<dialog #appDialog>
+
+  <form [formGroup]="form">
+
+    <input type="text" id="name" placeholder="enter name"
+           formControlName="name"/>
+
+    <input type="number" id="price" placeholder="enter price"
+           formControlName="price"/>
+
+    <input type="text" id="description" placeholder="enter description"
+           formControlName="description"/>
+
+    <input type="number" id="quality" placeholder="enter quality"
+           formControlName="quality"/>
+
+    <input type="text" id="image" placeholder="enter image"
+           formControlName="image"/>
+    <div>
+    <button type="submit" (click)="submit()">Submit</button>
+    <button type="submit" (click)="closeDialog()">closed</button>
+
+    </div>
+  </form>
+</dialog>
