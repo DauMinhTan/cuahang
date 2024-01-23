@@ -78,3 +78,4 @@ item.stock--;
 this.addToCartEvent.emit(item)
   }
 }
+

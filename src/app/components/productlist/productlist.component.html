@@ -7,10 +7,11 @@
         <p>Price: {{item.price}}</p>
         <p>description: {{item.description}}</p>
         <p> stock: {{item.stock}}</p>
-        <button (click)="addCart(item)" class="add-to-cart" type="button">Add to cart</button>
-        <button (click)="removeItems(item.id)" class="remove" type="button">remove</button>
-        <button (click)="openDialog(item)">update</button>
-
+        <div class="icon">
+          <button (click)="addCart(item)" class="add-to-cart" type="button"><i class="fa-solid fa-cart-plus"></i></button>
+          <button (click)="openDialog(item)"><i class="fa-solid fa-pen-to-square"></i></button>
+          <button (click)="removeItems(item.id)" class="remove" type="button"><i class="fa-solid fa-trash"></i></button>
+        </div>
       </div>
     </div>
     }
@@ -37,6 +38,7 @@
          formControlName="stock"/>
     </div>
   <div class="linklist">
+    <label>link:</label>
   <input type="text" id="image" placeholder="enter image"
          formControlName="image"/>
     </div>

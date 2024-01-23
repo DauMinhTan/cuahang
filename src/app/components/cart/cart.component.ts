@@ -14,6 +14,7 @@ export class CartComponent {
   dialog!: ElementRef<HTMLDialogElement>;
   cdr = inject(ChangeDetectorRef);
   openDialog() {
+    this.pay()
     Animation;
     this.dialog.nativeElement.showModal();
     this.cdr.detectChanges();

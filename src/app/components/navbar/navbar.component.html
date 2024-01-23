@@ -14,11 +14,11 @@
     </nav>
 
     <div class="btn">
-
+      <button (click)="openCartDialog()" ><i class="fa-solid fa-cart-shopping"> Cart</i></button>
       <button type="submit" (click)="openDialog()">
 
-        <i class="fa-solid fa-cart-shopping" aria-hidden="true"></i>
-        <p>Cart</p>
+<!--        <i class="fa-solid fa-cart-shopping" aria-hidden="true"></i>-->
+        <p> ADD</p>
       </button>
 
       <svg class="hamburger" width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -48,8 +48,8 @@
     <input type="number" id="quality" placeholder="enter stock"
            formControlName="stock"/>
         </div>
-    <div class="linknavbar">
-
+    <div class="linknavbar" >
+    <label>link:</label>
     <input type="text" id="image" placeholder="enter image"
            formControlName="image"/>
     </div>
@@ -65,4 +65,30 @@
     </div>
     </form>
 </dialog>
+
+<dialog class="dialogCart" #dialogCart >
+
+    @for (item of itemsInCart;track item.id)
+    {
+     <div class="content">
+       <div class="img">
+         <img src="{{item.image}}" alt="">
+       </div>
+       <div class="item-details">
+         <span class="name"> Name: {{ item.name }}</span>
+         <span class="quality">  Quality: {{ item.quality }} </span>
+         <span class="description">  Description: {{ item.description }}</span>
+         <span class="price">  ${{ item.price }}</span>
+
+       </div>
+     </div>
+    }
+
+  <div class="total">
+    <button (click)="closeCartDialog()">remove</button>
+    <p><b> total:{{total}}</b></p>
+  </div>
+  </dialog>
+
+
 

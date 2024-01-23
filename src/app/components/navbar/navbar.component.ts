@@ -1,4 +1,4 @@
-import {ChangeDetectorRef, Component, ElementRef, EventEmitter, inject, Output, ViewChild} from '@angular/core';
+import {ChangeDetectorRef, Component, ElementRef, EventEmitter, inject, Input, Output, ViewChild} from '@angular/core';
 import {FormControl, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
 
 export interface item{
@@ -59,5 +59,30 @@ export class NavbarComponent {
 
     this.newItemEvent.emit(newForm);
     this.closeDialog();
+  }
+
+  @Input() itemsInCart: item[]=[];
+  @ViewChild('dialogCart', { static: true })
+  cartDialog!: ElementRef<HTMLDialogElement>;
+  cartCdr = inject(ChangeDetectorRef);
+  openCartDialog() {
+    this.pay()
+    Animation;
+    this.cartDialog.nativeElement.showModal();
+    this.cartCdr.detectChanges();
+  }
+
+  closeCartDialog() {
+    this.cartDialog.nativeElement.close();
+    this.cartCdr.detectChanges();
+
+  }
+  total=0
+  pay(){
+
+    this.itemsInCart.forEach((item)=>{
+      this.total += item.price*item.quality
+
+    })
   }
 }
