@@ -1,14 +1,13 @@
 @for(item of items; track item.name) {
-  @if(item.quality > 0 && item.price > 0){
+  @if(item.stock > 0 && item.price > 0){
     <div class="wrapper">
       <div class="item">
         <img src="{{item.image}}">
         <h2 >{{item.name}}</h2>
         <p>Price: {{item.price}}</p>
         <p>description: {{item.description}}</p>
-        <p> quality: {{item.quality}}</p>
-
-        <button class="add-to-cart" type="button">Add to cart</button>
+        <p> stock: {{item.stock}}</p>
+        <button (click)="addCart(item)" class="add-to-cart" type="button">Add to cart</button>
         <button (click)="removeItems(item.id)" class="remove" type="button">remove</button>
         <button (click)="openDialog(item)">update</button>
 
@@ -16,26 +15,38 @@
     </div>
     }
 }
-<dialog #formup>
+
+<dialog #formup class="mainlist">
 
   <form [formGroup]="formupdate">
-
+  <div class="uplist">
+    <div><label>Name:</label>
   <input type="text" id="name" placeholder="enter name"
          formControlName="name" />
-
+  </div>
+    <div><label>Price:</label>
   <input type="number" id="price" placeholder="enter price"
          formControlName="price"/>
-
+    </div>
+    <div><label>Description:</label>
   <input type="text" id="description" placeholder="enter description"
          formControlName="description"/>
-
-  <input type="number" id="quality" placeholder="enter quality"
-         formControlName="quality"/>
-
+    </div>
+    <div><label>Quality:</label>
+  <input type="number" id="quality" placeholder="enter stock"
+         formControlName="stock"/>
+    </div>
+  <div class="linklist">
   <input type="text" id="image" placeholder="enter image"
          formControlName="image"/>
-<!--    <button (click)="updateItem(i)">update</button>-->
-    <button  (click)="closeDialog()">closed</button>
+    </div>
 
+    <div class="clicklist">
+    <button (click)="updateItem()">update</button>
+    <button  (click)="closeDialog()">closed</button>
+    </div>
+    </div>
   </form>
 </dialog>
+
+

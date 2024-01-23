@@ -12,7 +12,7 @@ ul {
 
 header {
   background-color: #dbe1e8;
-  padding: 2.5em;
+  padding: 1em;
   border-radius: 1rem;
 }
 .wrapper {
@@ -97,7 +97,7 @@ button {
 button p {
   margin-top: 5px;
   margin-bottom: 5px;
-  margin-right: 5px;
+  margin-right: 10px;
   font-size: 30px;
 }
 
@@ -142,3 +142,44 @@ span {
     border-bottom: 2px solid #0460bc;
   }
 }
+.upnavbar{
+width: 400px;
+  height: 100px;
+}
+.upnavbar input{
+  border-radius: 50px;
+  padding: 10px;
+  margin-left: 20px;
+  margin-right: 10px;
+  margin-top: 10px;
+align-items: center;
+  justify-content: center;
+  solid-color: #c3ccd7;
+}
+.linknavbar input{
+  width: 380px;
+}
+.mainnavbar {
+  margin-top: 50px;
+  margin-left: 400px;
+  width: 450px;
+  height: 450px;
+}
+ .mainnavbar .clicknavbar0 button {
+margin-top: 40px;
+   margin-left: 120px;
+}
+ .mainnavbar .clicknavbar01 button{
+width: 200px;
+   height: 50px;
+   margin-bottom: 50px;
+ }
+ .mainnavbar .clicknavbar button{
+   width: 250px;
+   height: 50px;
+   margin-left: 100px;
+   margin-top: 50px;
+   margin-bottom: 20px;
+ }
+
+

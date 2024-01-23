@@ -1,3 +1,3 @@
 <app-navbar (newItemEvent)="addItem($event)" ></app-navbar>
-<app-productlist [items]="itemlist"></app-productlist>
-
+<app-productlist [items]="itemlist" (addToCartEvent)="addToCart($event)"></app-productlist>
+<app-cart [itemsInCart]="itemlistCart"></app-cart>

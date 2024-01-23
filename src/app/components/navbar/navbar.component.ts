@@ -8,6 +8,7 @@ export interface item{
   price: number;
   quality: number;
 image: string;
+stock: number;
 }
 @Component({
   selector: 'app-navbar',
@@ -33,9 +34,9 @@ export class NavbarComponent {
   }
   @Output() newItemEvent = new EventEmitter<item>();
 
-  nextId: number = 1;
+  nextId: number = 7;
    form  = new FormGroup({
-
+      stock: new FormControl(0),
      id: new  FormControl(0),
      name: new FormControl(''),
     description: new FormControl(''),
@@ -48,13 +49,15 @@ export class NavbarComponent {
     let newForm : item = {
 
       id: this.nextId ++  ,
-
+      stock: this.form.value.stock || 0,
       name : this.form.value.name || '',
       description : this.form.value.description || '',
       price : this.form.value.price  || 0,
       image : this.form.value.image || '',
       quality : this.form.value.quality || 0,
     }
+
     this.newItemEvent.emit(newForm);
+    this.closeDialog();
   }
 }

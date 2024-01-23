@@ -1,4 +1,4 @@
-import {ChangeDetectorRef, Component, ElementRef, inject, Input, ViewChild} from '@angular/core';
+import {ChangeDetectorRef, Component, ElementRef, EventEmitter, inject, Input, Output, ViewChild} from '@angular/core';
 import {item} from "../navbar/navbar.component";
 import {FormControl, FormGroup, ReactiveFormsModule} from "@angular/forms";
 import {update} from "@angular-devkit/build-angular/src/tools/esbuild/angular/compilation/parallel-worker";
@@ -24,7 +24,6 @@ export class ProductlistComponent {
     {
       this.items.splice(index,1)
     }
-    this.items[i].name = 'done'
   }
   @ViewChild('formup', { static: true })
   dialog!: ElementRef<HTMLDialogElement>;
@@ -43,6 +42,7 @@ export class ProductlistComponent {
   }
 
   formupdate  = new FormGroup({
+    stock: new  FormControl(0),
 
     id: new  FormControl(0),
     name: new FormControl(''),
@@ -51,10 +51,12 @@ export class ProductlistComponent {
     quality: new  FormControl(0),
     image: new  FormControl(''),
   });
-  updateItem(i:number)
+  updateItem()
   {
 
     let newForm : item = {
+      stock : this.formupdate.value.stock || 0,
+
       id : this.formupdate.value.id || 0,
       name : this.formupdate.value.name || '',
       description : this.formupdate.value.description || '',
@@ -62,6 +64,17 @@ export class ProductlistComponent {
       image : this.formupdate.value.image || '',
       quality : this.formupdate.value.quality || 0,
     }
-    this.items[i]= newForm
+    const  index = this.items.findIndex((item)=> item.id === newForm.id);
+    if (index != -1)
+    {
+      this.items[index] = newForm
+    }
+    this.closeDialog();
+
+  }
+  @Output() addToCartEvent=new EventEmitter<item>();
+  addCart(item: item){
+item.stock--;
+this.addToCartEvent.emit(item)
   }
 }
